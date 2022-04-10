@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VanPhongPham" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=TITI\SQLEXPRESS;Initial Catalog=VanPhongPham;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="VanPhongPhamConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADMIN" Member="ADMINs">
+    <Type Name="ADMIN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenAD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenDangNhap" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DANHMUCSANPHAM" Member="DANHMUCSANPHAMs">
+    <Type Name="DANHMUCSANPHAM">
+      <Column Name="IdDM" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenDM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhAnh" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="DANHMUCSANPHAM_SANPHAM" Member="SANPHAMs" ThisKey="IdDM" OtherKey="IdDM" Type="SANPHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DONHANG" Member="DONHANGs">
+    <Type Name="DONHANG">
+      <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdSP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IdND" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DONHANG_THANHTOAN" Member="THANHTOANs" ThisKey="MaDH" OtherKey="MaDH" Type="THANHTOAN" />
+      <Association Name="NGUOIDUNG_DONHANG" Member="NGUOIDUNG" ThisKey="IdND" OtherKey="IdND" Type="NGUOIDUNG" IsForeignKey="true" />
+      <Association Name="SANPHAM_DONHANG" Member="SANPHAM" ThisKey="IdSP" OtherKey="IdSP" Type="SANPHAM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NCC" Member="NCCs">
+    <Type Name="NCC">
+      <Column Name="IdNCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenNCC" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhAnh" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="NCC_SANPHAM" Member="SANPHAMs" ThisKey="IdNCC" OtherKey="IdNCC" Type="SANPHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NGUOIDUNG" Member="NGUOIDUNGs">
+    <Type Name="NGUOIDUNG">
+      <Column Name="IdND" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenND" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SDT" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="NGUOIDUNG_DONHANG" Member="DONHANGs" ThisKey="IdND" OtherKey="IdND" Type="DONHANG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SANPHAM" Member="SANPHAMs">
+    <Type Name="SANPHAM">
+      <Column Name="IdSP" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdDM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdNCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenSP" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhAnh" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="SANPHAM_DONHANG" Member="DONHANGs" ThisKey="IdSP" OtherKey="IdSP" Type="DONHANG" />
+      <Association Name="SANPHAM_THANHTOAN" Member="THANHTOANs" ThisKey="IdSP" OtherKey="IdSP" Type="THANHTOAN" />
+      <Association Name="DANHMUCSANPHAM_SANPHAM" Member="DANHMUCSANPHAM" ThisKey="IdDM" OtherKey="IdDM" Type="DANHMUCSANPHAM" IsForeignKey="true" />
+      <Association Name="NCC_SANPHAM" Member="NCC" ThisKey="IdNCC" OtherKey="IdNCC" Type="NCC" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THANHTOAN" Member="THANHTOANs">
+    <Type Name="THANHTOAN">
+      <Column Name="MaDH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdSP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ThanhTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SANPHAM_THANHTOAN" Member="SANPHAM" ThisKey="IdSP" OtherKey="IdSP" Type="SANPHAM" IsForeignKey="true" />
+      <Association Name="DONHANG_THANHTOAN" Member="DONHANG" ThisKey="MaDH" OtherKey="MaDH" Type="DONHANG" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
