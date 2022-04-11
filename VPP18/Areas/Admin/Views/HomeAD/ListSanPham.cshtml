@@ -1,0 +1,53 @@
+﻿@model IEnumerable<VPP18.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "ListSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    
+    <tr>
+        <th>MÃ SẢN PHẨM</th>
+        <th> NHÀ CUNG CẤP</th>
+        <th>TÊN SẢN PHẨM</th>
+        <th>HÌNH ẢNH</th>
+        <th>GIÁ</th>
+        <th>SỐ LƯỢNG TỒN</th>
+        <th>MÔ TẢ</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NCC.TenNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HinhAnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdSP }) |
+                @Html.ActionLink("Details", "Detail", new { id = item.IdSP }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdSP })
+            </td>
+        </tr>
+    }
+</table>

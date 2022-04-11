@@ -190,7 +190,7 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenAD", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenAD", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TenAD
 		{
 			get
@@ -421,9 +421,11 @@ namespace VPP18.Models
 		
 		private System.Nullable<int> _IdND;
 		
-		private System.Nullable<decimal> _TongTien;
+		private System.Nullable<decimal> _ThanhTien;
 		
 		private string _TinhTrang;
+		
+		private System.DateTime _NgayDat;
 		
 		private EntityRef<NGUOIDUNG> _NGUOIDUNG;
 		
@@ -439,10 +441,12 @@ namespace VPP18.Models
     partial void OnIdSPChanged();
     partial void OnIdNDChanging(System.Nullable<int> value);
     partial void OnIdNDChanged();
-    partial void OnTongTienChanging(System.Nullable<decimal> value);
-    partial void OnTongTienChanged();
+    partial void OnThanhTienChanging(System.Nullable<decimal> value);
+    partial void OnThanhTienChanged();
     partial void OnTinhTrangChanging(string value);
     partial void OnTinhTrangChanged();
+    partial void OnNgayDatChanging(System.DateTime value);
+    partial void OnNgayDatChanged();
     #endregion
 		
 		public DONHANG()
@@ -520,27 +524,27 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> TongTien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThanhTien", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> ThanhTien
 		{
 			get
 			{
-				return this._TongTien;
+				return this._ThanhTien;
 			}
 			set
 			{
-				if ((this._TongTien != value))
+				if ((this._ThanhTien != value))
 				{
-					this.OnTongTienChanging(value);
+					this.OnThanhTienChanging(value);
 					this.SendPropertyChanging();
-					this._TongTien = value;
-					this.SendPropertyChanged("TongTien");
-					this.OnTongTienChanged();
+					this._ThanhTien = value;
+					this.SendPropertyChanged("ThanhTien");
+					this.OnThanhTienChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrang", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrang", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TinhTrang
 		{
 			get
@@ -556,6 +560,26 @@ namespace VPP18.Models
 					this._TinhTrang = value;
 					this.SendPropertyChanged("TinhTrang");
 					this.OnTinhTrangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDat", DbType="DateTime NOT NULL")]
+		public System.DateTime NgayDat
+		{
+			get
+			{
+				return this._NgayDat;
+			}
+			set
+			{
+				if ((this._NgayDat != value))
+				{
+					this.OnNgayDatChanging(value);
+					this.SendPropertyChanging();
+					this._NgayDat = value;
+					this.SendPropertyChanged("NgayDat");
+					this.OnNgayDatChanged();
 				}
 			}
 		}
@@ -665,8 +689,6 @@ namespace VPP18.Models
 		
 		private string _DiaChi;
 		
-		private string _Email;
-		
 		private EntitySet<SANPHAM> _SANPHAMs;
 		
     #region Extensibility Method Definitions
@@ -683,8 +705,6 @@ namespace VPP18.Models
     partial void OnSDTChanged();
     partial void OnDiaChiChanging(string value);
     partial void OnDiaChiChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
     #endregion
 		
 		public NCC()
@@ -793,26 +813,6 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NCC_SANPHAM", Storage="_SANPHAMs", ThisKey="IdNCC", OtherKey="IdNCC")]
 		public EntitySet<SANPHAM> SANPHAMs
 		{
@@ -871,6 +871,8 @@ namespace VPP18.Models
 		
 		private string _SDT;
 		
+		private string _DiaChi;
+		
 		private string _Email;
 		
 		private string _MatKhau;
@@ -887,6 +889,8 @@ namespace VPP18.Models
     partial void OnTenNDChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
+    partial void OnDiaChiChanging(string value);
+    partial void OnDiaChiChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
     partial void OnMatKhauChanging(string value);
@@ -955,6 +959,26 @@ namespace VPP18.Models
 					this._SDT = value;
 					this.SendPropertyChanged("SDT");
 					this.OnSDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string DiaChi
+		{
+			get
+			{
+				return this._DiaChi;
+			}
+			set
+			{
+				if ((this._DiaChi != value))
+				{
+					this.OnDiaChiChanging(value);
+					this.SendPropertyChanging();
+					this._DiaChi = value;
+					this.SendPropertyChanged("DiaChi");
+					this.OnDiaChiChanged();
 				}
 			}
 		}
@@ -1063,7 +1087,7 @@ namespace VPP18.Models
 		
 		private System.Nullable<decimal> _DonGia;
 		
-		private System.Nullable<int> _SoLuongTon;
+		private int _SoLuongTon;
 		
 		private string _MoTa;
 		
@@ -1089,7 +1113,7 @@ namespace VPP18.Models
     partial void OnHinhAnhChanged();
     partial void OnDonGiaChanging(System.Nullable<decimal> value);
     partial void OnDonGiaChanged();
-    partial void OnSoLuongTonChanging(System.Nullable<int> value);
+    partial void OnSoLuongTonChanging(int value);
     partial void OnSoLuongTonChanged();
     partial void OnMoTaChanging(string value);
     partial void OnMoTaChanged();
@@ -1231,8 +1255,8 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int")]
-		public System.Nullable<int> SoLuongTon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int NOT NULL")]
+		public int SoLuongTon
 		{
 			get
 			{
@@ -1393,9 +1417,13 @@ namespace VPP18.Models
 		
 		private string _IdSP;
 		
-		private System.Nullable<decimal> _ThanhTien;
+		private int _SoLuong;
 		
-		private System.Nullable<int> _SoLuong;
+		private System.Nullable<decimal> _TongTien;
+		
+		private string _HinhThucTT;
+		
+		private string _DonViVC;
 		
 		public THANHTOAN()
 		{
@@ -1433,24 +1461,8 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThanhTien", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> ThanhTien
-		{
-			get
-			{
-				return this._ThanhTien;
-			}
-			set
-			{
-				if ((this._ThanhTien != value))
-				{
-					this._ThanhTien = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
-		public System.Nullable<int> SoLuong
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int NOT NULL")]
+		public int SoLuong
 		{
 			get
 			{
@@ -1461,6 +1473,54 @@ namespace VPP18.Models
 				if ((this._SoLuong != value))
 				{
 					this._SoLuong = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TongTien
+		{
+			get
+			{
+				return this._TongTien;
+			}
+			set
+			{
+				if ((this._TongTien != value))
+				{
+					this._TongTien = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhThucTT", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string HinhThucTT
+		{
+			get
+			{
+				return this._HinhThucTT;
+			}
+			set
+			{
+				if ((this._HinhThucTT != value))
+				{
+					this._HinhThucTT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonViVC", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string DonViVC
+		{
+			get
+			{
+				return this._DonViVC;
+			}
+			set
+			{
+				if ((this._DonViVC != value))
+				{
+					this._DonViVC = value;
 				}
 			}
 		}
