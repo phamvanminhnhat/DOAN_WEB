@@ -118,12 +118,82 @@ namespace VPP18.Controllers
             }
             return RedirectToAction("GioHang");
         }
+
+        public ActionResult XoaGioHang(string id)
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.IdSP == id);
+            if (sanpham != null)
+            {
+                lstGioHang.RemoveAll(n => n.IdSP == id);
+                return RedirectToAction("GioHang");
+            }
+            return RedirectToAction("GioHang");
+        }
+
+        public ActionResult XoaTatCagioHang()
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            lstGioHang.Clear();
+            return RedirectToAction("GioHang");
+        }
+
+        [HttpGet]
+        public ActionResult DatHang()
+        {
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            if (Session["GioHang"] == null)
+            {
+                return RedirectToAction("GioHang", "GioHang");
+            }
+            List<GioHang> lstGiohang = LayGioHang();
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            ViewBag.Tongsoluongsanpham = TongSoLuongSanPham();
+            return View(lstGiohang);
+        }
+        public ActionResult DatHang(FormCollection collection)
+        {
+            DONHANG dh = new DONHANG();
+            NGUOIDUNG kh = (NGUOIDUNG)Session["TaiKhoan"];
+            SANPHAM s = new SANPHAM();
+
+            List<GioHang> gh = LayGioHang();
+            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["NgayGiao"]);
+
+            dh.IdND = kh.IdND;
+            dh.NgayDat = DateTime.Now;
+            dh.NgayGiao = DateTime.Parse(ngaygiao);
+            
+            
+
+            data.DONHANGs.InsertOnSubmit(dh);
+            data.SubmitChanges();
+            foreach (var item in gh)
+            {
+                THANHTOAN ctdh = new THANHTOAN();
+                ctdh.MaDH = dh.MaDH;
+                ctdh.IdSP = item.IdSP;
+                ctdh.SoLuong = item.SoLuong;
+                ctdh.TongTien = (decimal)item.GiaBan;
+                s = data.SANPHAMs.Single(n => n.IdSP == item.IdSP);
+                s.SoLuongTon -= ctdh.SoLuong;
+                data.SubmitChanges();
+
+                data.THANHTOANs.InsertOnSubmit(ctdh);
+            }
+            data.SubmitChanges();
+            Session["Giohang"] = null;
+            return RedirectToAction("Xacnhangiohang", "Giohang");
+        }
         // GET: GioHang
-        public ActionResult Index()
+        public ActionResult Xacnhangiohang()
         {
             return View();
         }
-
 
     }
 }

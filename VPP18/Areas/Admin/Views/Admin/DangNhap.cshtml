@@ -1,0 +1,34 @@
+﻿@model VPP18.Models.ADMIN
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row justify-content-md-center">
+    <div>
+        <div class="card">
+            <div style="text-align:center;font-weight:600" class="card-header">
+                ĐĂNG NHẬP
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "HomeAD", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TenDangNhap)
+                        @Html.TextBoxFor(m => m.TenDangNhap, "", new { @class = "form-control", @placeholder = "Nhập tên đăng nhập" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MatKhau)
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", @placeholder = "Nhập mật khẩu" })
+                    </div>
+                    <div style="text-align:center" class="form-group">
+                        <input type="submit" name="submit" class="btn btn-primary" value="ĐĂNG NHẬP" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

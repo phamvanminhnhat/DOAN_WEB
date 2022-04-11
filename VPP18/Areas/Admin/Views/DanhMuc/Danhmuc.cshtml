@@ -1,0 +1,44 @@
+﻿@model IEnumerable<VPP18.Models.DANHMUCSANPHAM>
+
+@{
+    ViewBag.Title = "Danhmuc";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã danh mục
+        </th>
+        <th>
+            Tên danh mục
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdDM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenDM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HinhAnh)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IdDM }) |
+        @Html.ActionLink("Details", "Detail", new { id = item.IdDM }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IdDM }) |
+       
+    </td>
+</tr>
+}
+
+</table>

@@ -22,7 +22,7 @@ namespace VPP18.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="VanPhongPham")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="VANPHONGPHAM")]
 	public partial class MyDataDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -42,12 +42,12 @@ namespace VPP18.Models
     partial void InsertNCC(NCC instance);
     partial void UpdateNCC(NCC instance);
     partial void DeleteNCC(NCC instance);
-    partial void InsertNGUOIDUNG(NGUOIDUNG instance);
-    partial void UpdateNGUOIDUNG(NGUOIDUNG instance);
-    partial void DeleteNGUOIDUNG(NGUOIDUNG instance);
     partial void InsertSANPHAM(SANPHAM instance);
     partial void UpdateSANPHAM(SANPHAM instance);
     partial void DeleteSANPHAM(SANPHAM instance);
+    partial void InsertNGUOIDUNG(NGUOIDUNG instance);
+    partial void UpdateNGUOIDUNG(NGUOIDUNG instance);
+    partial void DeleteNGUOIDUNG(NGUOIDUNG instance);
     #endregion
 		
 		public MyDataDataContext() : 
@@ -112,14 +112,6 @@ namespace VPP18.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<NGUOIDUNG> NGUOIDUNGs
-		{
-			get
-			{
-				return this.GetTable<NGUOIDUNG>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SANPHAM> SANPHAMs
 		{
 			get
@@ -133,6 +125,14 @@ namespace VPP18.Models
 			get
 			{
 				return this.GetTable<THANHTOAN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<NGUOIDUNG> NGUOIDUNGs
+		{
+			get
+			{
+				return this.GetTable<NGUOIDUNG>();
 			}
 		}
 	}
@@ -419,7 +419,7 @@ namespace VPP18.Models
 		
 		private string _IdSP;
 		
-		private System.Nullable<int> _IdND;
+		private int _IdND;
 		
 		private System.Nullable<decimal> _ThanhTien;
 		
@@ -427,9 +427,11 @@ namespace VPP18.Models
 		
 		private System.DateTime _NgayDat;
 		
-		private EntityRef<NGUOIDUNG> _NGUOIDUNG;
+		private System.DateTime _NgayGiao;
 		
 		private EntityRef<SANPHAM> _SANPHAM;
+		
+		private EntityRef<NGUOIDUNG> _NGUOIDUNG;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -439,7 +441,7 @@ namespace VPP18.Models
     partial void OnMaDHChanged();
     partial void OnIdSPChanging(string value);
     partial void OnIdSPChanged();
-    partial void OnIdNDChanging(System.Nullable<int> value);
+    partial void OnIdNDChanging(int value);
     partial void OnIdNDChanged();
     partial void OnThanhTienChanging(System.Nullable<decimal> value);
     partial void OnThanhTienChanged();
@@ -447,12 +449,14 @@ namespace VPP18.Models
     partial void OnTinhTrangChanged();
     partial void OnNgayDatChanging(System.DateTime value);
     partial void OnNgayDatChanged();
+    partial void OnNgayGiaoChanging(System.DateTime value);
+    partial void OnNgayGiaoChanged();
     #endregion
 		
 		public DONHANG()
 		{
-			this._NGUOIDUNG = default(EntityRef<NGUOIDUNG>);
 			this._SANPHAM = default(EntityRef<SANPHAM>);
+			this._NGUOIDUNG = default(EntityRef<NGUOIDUNG>);
 			OnCreated();
 		}
 		
@@ -476,7 +480,7 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSP", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSP", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string IdSP
 		{
 			get
@@ -500,8 +504,8 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdND", DbType="Int")]
-		public System.Nullable<int> IdND
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdND", DbType="Int NOT NULL")]
+		public int IdND
 		{
 			get
 			{
@@ -584,36 +588,22 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NGUOIDUNG_DONHANG", Storage="_NGUOIDUNG", ThisKey="IdND", OtherKey="IdND", IsForeignKey=true)]
-		public NGUOIDUNG NGUOIDUNG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayGiao", DbType="DateTime NOT NULL")]
+		public System.DateTime NgayGiao
 		{
 			get
 			{
-				return this._NGUOIDUNG.Entity;
+				return this._NgayGiao;
 			}
 			set
 			{
-				NGUOIDUNG previousValue = this._NGUOIDUNG.Entity;
-				if (((previousValue != value) 
-							|| (this._NGUOIDUNG.HasLoadedOrAssignedValue == false)))
+				if ((this._NgayGiao != value))
 				{
+					this.OnNgayGiaoChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NGUOIDUNG.Entity = null;
-						previousValue.DONHANGs.Remove(this);
-					}
-					this._NGUOIDUNG.Entity = value;
-					if ((value != null))
-					{
-						value.DONHANGs.Add(this);
-						this._IdND = value.IdND;
-					}
-					else
-					{
-						this._IdND = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("NGUOIDUNG");
+					this._NgayGiao = value;
+					this.SendPropertyChanged("NgayGiao");
+					this.OnNgayGiaoChanged();
 				}
 			}
 		}
@@ -648,6 +638,40 @@ namespace VPP18.Models
 						this._IdSP = default(string);
 					}
 					this.SendPropertyChanged("SANPHAM");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NGUOIDUNG_DONHANG", Storage="_NGUOIDUNG", ThisKey="IdND", OtherKey="IdND", IsForeignKey=true)]
+		public NGUOIDUNG NGUOIDUNG
+		{
+			get
+			{
+				return this._NGUOIDUNG.Entity;
+			}
+			set
+			{
+				NGUOIDUNG previousValue = this._NGUOIDUNG.Entity;
+				if (((previousValue != value) 
+							|| (this._NGUOIDUNG.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NGUOIDUNG.Entity = null;
+						previousValue.DONHANGs.Remove(this);
+					}
+					this._NGUOIDUNG.Entity = value;
+					if ((value != null))
+					{
+						value.DONHANGs.Add(this);
+						this._IdND = value.IdND;
+					}
+					else
+					{
+						this._IdND = default(int);
+					}
+					this.SendPropertyChanged("NGUOIDUNG");
 				}
 			}
 		}
@@ -859,216 +883,6 @@ namespace VPP18.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NGUOIDUNG")]
-	public partial class NGUOIDUNG : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdND;
-		
-		private string _TenND;
-		
-		private string _SDT;
-		
-		private string _DiaChi;
-		
-		private string _Email;
-		
-		private string _MatKhau;
-		
-		private EntitySet<DONHANG> _DONHANGs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdNDChanging(int value);
-    partial void OnIdNDChanged();
-    partial void OnTenNDChanging(string value);
-    partial void OnTenNDChanged();
-    partial void OnSDTChanging(string value);
-    partial void OnSDTChanged();
-    partial void OnDiaChiChanging(string value);
-    partial void OnDiaChiChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnMatKhauChanging(string value);
-    partial void OnMatKhauChanged();
-    #endregion
-		
-		public NGUOIDUNG()
-		{
-			this._DONHANGs = new EntitySet<DONHANG>(new Action<DONHANG>(this.attach_DONHANGs), new Action<DONHANG>(this.detach_DONHANGs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdND", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdND
-		{
-			get
-			{
-				return this._IdND;
-			}
-			set
-			{
-				if ((this._IdND != value))
-				{
-					this.OnIdNDChanging(value);
-					this.SendPropertyChanging();
-					this._IdND = value;
-					this.SendPropertyChanged("IdND");
-					this.OnIdNDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenND", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenND
-		{
-			get
-			{
-				return this._TenND;
-			}
-			set
-			{
-				if ((this._TenND != value))
-				{
-					this.OnTenNDChanging(value);
-					this.SendPropertyChanging();
-					this._TenND = value;
-					this.SendPropertyChanged("TenND");
-					this.OnTenNDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="Char(11) NOT NULL", CanBeNull=false)]
-		public string SDT
-		{
-			get
-			{
-				return this._SDT;
-			}
-			set
-			{
-				if ((this._SDT != value))
-				{
-					this.OnSDTChanging(value);
-					this.SendPropertyChanging();
-					this._SDT = value;
-					this.SendPropertyChanged("SDT");
-					this.OnSDTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string DiaChi
-		{
-			get
-			{
-				return this._DiaChi;
-			}
-			set
-			{
-				if ((this._DiaChi != value))
-				{
-					this.OnDiaChiChanging(value);
-					this.SendPropertyChanging();
-					this._DiaChi = value;
-					this.SendPropertyChanged("DiaChi");
-					this.OnDiaChiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string MatKhau
-		{
-			get
-			{
-				return this._MatKhau;
-			}
-			set
-			{
-				if ((this._MatKhau != value))
-				{
-					this.OnMatKhauChanging(value);
-					this.SendPropertyChanging();
-					this._MatKhau = value;
-					this.SendPropertyChanged("MatKhau");
-					this.OnMatKhauChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NGUOIDUNG_DONHANG", Storage="_DONHANGs", ThisKey="IdND", OtherKey="IdND")]
-		public EntitySet<DONHANG> DONHANGs
-		{
-			get
-			{
-				return this._DONHANGs;
-			}
-			set
-			{
-				this._DONHANGs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_DONHANGs(DONHANG entity)
-		{
-			this.SendPropertyChanging();
-			entity.NGUOIDUNG = this;
-		}
-		
-		private void detach_DONHANGs(DONHANG entity)
-		{
-			this.SendPropertyChanging();
-			entity.NGUOIDUNG = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SANPHAM")]
 	public partial class SANPHAM : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1077,9 +891,9 @@ namespace VPP18.Models
 		
 		private string _IdSP;
 		
-		private System.Nullable<int> _IdDM;
+		private int _IdDM;
 		
-		private System.Nullable<int> _IdNCC;
+		private int _IdNCC;
 		
 		private string _TenSP;
 		
@@ -1103,9 +917,9 @@ namespace VPP18.Models
     partial void OnCreated();
     partial void OnIdSPChanging(string value);
     partial void OnIdSPChanged();
-    partial void OnIdDMChanging(System.Nullable<int> value);
+    partial void OnIdDMChanging(int value);
     partial void OnIdDMChanged();
-    partial void OnIdNCCChanging(System.Nullable<int> value);
+    partial void OnIdNCCChanging(int value);
     partial void OnIdNCCChanged();
     partial void OnTenSPChanging(string value);
     partial void OnTenSPChanged();
@@ -1147,8 +961,8 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdDM", DbType="Int")]
-		public System.Nullable<int> IdDM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdDM", DbType="Int NOT NULL")]
+		public int IdDM
 		{
 			get
 			{
@@ -1171,8 +985,8 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdNCC", DbType="Int")]
-		public System.Nullable<int> IdNCC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdNCC", DbType="Int NOT NULL")]
+		public int IdNCC
 		{
 			get
 			{
@@ -1335,7 +1149,7 @@ namespace VPP18.Models
 					}
 					else
 					{
-						this._IdDM = default(Nullable<int>);
+						this._IdDM = default(int);
 					}
 					this.SendPropertyChanged("DANHMUCSANPHAM");
 				}
@@ -1369,7 +1183,7 @@ namespace VPP18.Models
 					}
 					else
 					{
-						this._IdNCC = default(Nullable<int>);
+						this._IdNCC = default(int);
 					}
 					this.SendPropertyChanged("NCC");
 				}
@@ -1413,7 +1227,7 @@ namespace VPP18.Models
 	public partial class THANHTOAN
 	{
 		
-		private System.Nullable<int> _MaDH;
+		private int _MaDH;
 		
 		private string _IdSP;
 		
@@ -1429,8 +1243,8 @@ namespace VPP18.Models
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDH", DbType="Int")]
-		public System.Nullable<int> MaDH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDH", DbType="Int NOT NULL")]
+		public int MaDH
 		{
 			get
 			{
@@ -1445,7 +1259,7 @@ namespace VPP18.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSP", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSP", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string IdSP
 		{
 			get
@@ -1523,6 +1337,216 @@ namespace VPP18.Models
 					this._DonViVC = value;
 				}
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NGUOIDUNG")]
+	public partial class NGUOIDUNG : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdND;
+		
+		private string _TenND;
+		
+		private string _SDT;
+		
+		private string _DiaChi;
+		
+		private string _Email;
+		
+		private string _MatKhau;
+		
+		private EntitySet<DONHANG> _DONHANGs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdNDChanging(int value);
+    partial void OnIdNDChanged();
+    partial void OnTenNDChanging(string value);
+    partial void OnTenNDChanged();
+    partial void OnSDTChanging(string value);
+    partial void OnSDTChanged();
+    partial void OnDiaChiChanging(string value);
+    partial void OnDiaChiChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnMatKhauChanging(string value);
+    partial void OnMatKhauChanged();
+    #endregion
+		
+		public NGUOIDUNG()
+		{
+			this._DONHANGs = new EntitySet<DONHANG>(new Action<DONHANG>(this.attach_DONHANGs), new Action<DONHANG>(this.detach_DONHANGs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdND", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdND
+		{
+			get
+			{
+				return this._IdND;
+			}
+			set
+			{
+				if ((this._IdND != value))
+				{
+					this.OnIdNDChanging(value);
+					this.SendPropertyChanging();
+					this._IdND = value;
+					this.SendPropertyChanged("IdND");
+					this.OnIdNDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenND", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TenND
+		{
+			get
+			{
+				return this._TenND;
+			}
+			set
+			{
+				if ((this._TenND != value))
+				{
+					this.OnTenNDChanging(value);
+					this.SendPropertyChanging();
+					this._TenND = value;
+					this.SendPropertyChanged("TenND");
+					this.OnTenNDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="Char(11)")]
+		public string SDT
+		{
+			get
+			{
+				return this._SDT;
+			}
+			set
+			{
+				if ((this._SDT != value))
+				{
+					this.OnSDTChanging(value);
+					this.SendPropertyChanging();
+					this._SDT = value;
+					this.SendPropertyChanged("SDT");
+					this.OnSDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string DiaChi
+		{
+			get
+			{
+				return this._DiaChi;
+			}
+			set
+			{
+				if ((this._DiaChi != value))
+				{
+					this.OnDiaChiChanging(value);
+					this.SendPropertyChanging();
+					this._DiaChi = value;
+					this.SendPropertyChanged("DiaChi");
+					this.OnDiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string MatKhau
+		{
+			get
+			{
+				return this._MatKhau;
+			}
+			set
+			{
+				if ((this._MatKhau != value))
+				{
+					this.OnMatKhauChanging(value);
+					this.SendPropertyChanging();
+					this._MatKhau = value;
+					this.SendPropertyChanged("MatKhau");
+					this.OnMatKhauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NGUOIDUNG_DONHANG", Storage="_DONHANGs", ThisKey="IdND", OtherKey="IdND")]
+		public EntitySet<DONHANG> DONHANGs
+		{
+			get
+			{
+				return this._DONHANGs;
+			}
+			set
+			{
+				this._DONHANGs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DONHANGs(DONHANG entity)
+		{
+			this.SendPropertyChanging();
+			entity.NGUOIDUNG = this;
+		}
+		
+		private void detach_DONHANGs(DONHANG entity)
+		{
+			this.SendPropertyChanging();
+			entity.NGUOIDUNG = null;
 		}
 	}
 }

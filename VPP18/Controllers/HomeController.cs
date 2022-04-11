@@ -41,16 +41,16 @@ namespace VPP18.Controllers
         }
         [HttpPost]
         public ActionResult DangKy(FormCollection collection, NGUOIDUNG nd)
-        {
-
-            var hoten = collection["IdND"];
-            var tendangnhap = collection["TenND"];
-            var matkhau = GetMD5(collection["matkhau"]);
-            var MatKhauXacNhan = collection["MatKhauXacNhan"];
-            var email = collection["email"];
-            var diachi = collection["diachi"];
-            var dienthoai = collection["dienthoai"];
-            var ngaysinh = String.Format("{0:MM/dd/yyyy}", collection["ngaysinh"]);
+        {          
+            var tennguoidung = collection["TenND"];
+     
+            var dienthoai = collection["SDT"];
+            var diachi = collection["DiaChi"];
+            var email = collection["Email"];
+            var matkhau = GetMD5(collection["MatKhau"]);
+            var MatKhauXacNhan = GetMD5(collection["MatKhauXacNhan"]);
+            
+            
 
             if (string.IsNullOrEmpty(MatKhauXacNhan))
             {
@@ -64,11 +64,11 @@ namespace VPP18.Controllers
                 }
                 else
                 {
-                    nd.TenND = hoten;
+                    nd.TenND = tennguoidung;
                     nd.SDT = dienthoai;
-                    nd.MatKhau = GetMD5(matkhau);
+                    nd.DiaChi = diachi;
                     nd.Email = email;
-
+                    nd.MatKhau = matkhau;
 
                     data.NGUOIDUNGs.InsertOnSubmit(nd);
                     data.SubmitChanges();
@@ -101,19 +101,19 @@ namespace VPP18.Controllers
         [HttpPost]
         public ActionResult DangNhap(FormCollection collection)
         {
-            var email = collection["email"];
-            var matkhau = collection["matkhau"];
+            var email = collection["Email"];
+            var matkhau = collection["MatKhau"];
             NGUOIDUNG nd = data.NGUOIDUNGs.FirstOrDefault(n => n.Email == email && n.MatKhau == matkhau);
             if (nd != null)
             {
                 ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
-                Session["TaiKhoan"] = nd;
+                Session["TenND"] = nd;
             }
             else
             {
                 ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ListSP", "SanPham");
         }
 
     }

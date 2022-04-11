@@ -6,11 +6,16 @@
 }
 
 
+
+
+@Html.ActionLink("Thêm mới", "Create")
+
 <table class="table">
-    
+
     <tr>
         <th>MÃ SẢN PHẨM</th>
         <th> NHÀ CUNG CẤP</th>
+        <th> DANH MỤC SẢN PHẨM</th>
         <th>TÊN SẢN PHẨM</th>
         <th>HÌNH ẢNH</th>
         <th>GIÁ</th>
@@ -21,33 +26,38 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdSP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NCC.TenNCC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenSP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HinhAnh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonGia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoLuongTon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MoTa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdSP }) |
-                @Html.ActionLink("Details", "Detail", new { id = item.IdSP }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdSP })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdSP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NCC.TenNCC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DANHMUCSANPHAM.TenDM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenSP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HinhAnh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DonGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoLuongTon)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MoTa)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IdSP }) |
+        @Html.ActionLink("Details", "Detail", new { id = item.IdSP }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IdSP })
+
+    </td>
+
+</tr>
     }
 </table>

@@ -119,8 +119,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeADController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLNGUOIDUNGController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -128,6 +130,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\MyData.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -199,11 +202,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAD\Index.cshtml" />
-    <Content Include="Models\MyData.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MyData.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Admin\Views\HomeAD\ListSanPham.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAD\Create.cshtml" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -220,15 +218,29 @@
     <Content Include="Content\images\banners\.DS_Store" />
     <Content Include="Content\images\icons\.DS_Store" />
     <Content Include="Content\images\posts\.DS_Store" />
-    <None Include="Models\MyData.dbml.layout">
-      <DependentUpon>MyData.dbml</DependentUpon>
-    </None>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Models\MyData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MyData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\DanhMuc\Danhmuc.cshtml" />
+    <Content Include="Areas\Admin\Views\QLNGUOIDUNG\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QLNGUOIDUNG\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\QLNGUOIDUNG\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QLNGUOIDUNG\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMuc\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMuc\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMuc\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DangNhap.cshtml" />
+    <None Include="Models\MyData.dbml.layout">
+      <DependentUpon>MyData.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -257,7 +269,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -269,6 +280,10 @@
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Views\SanPham\ListSP.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\SanPham\Detail.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,6 +18,12 @@ namespace VPP18.Controllers
             
         }
 
+        public ActionResult Detail(string id)
+        {
+            var D_sanpham = data.SANPHAMs.Where(m => m.IdSP == id).First();
+            return View(D_sanpham);
+        }
+
 
     }
 }
