@@ -85,12 +85,8 @@ DonViVC nvarchar(50) not null,
    insert into SANPHAM values ('SP1',1,1, N'But chì B2','But1.jpg', 1200, 1000,'Bút chì để viết' )
    insert into SANPHAM values ('SP2',2,2, N'Vở hồng hà','Vo1.jpg', 6000, 1000,'Vở viết' )
    go 
-   insert into DONHANG values ('SP1',1,1,3600, 'Đang giao hàng', '12/04/2022','04/04/2022')
-   insert into DONHANG values ('SP1',1,1,3600, 'Đang xử lý','14/04/2022','04/04/2022' )
+   insert into DONHANG values ('SP1',1,3600, 'Đang giao hàng', '12/04/2022','04/04/2022')
+   insert into DONHANG values ('SP1',1,3600, 'Đang xử lý','14/04/2022','04/04/2022' )
    go
    insert into THANHTOAN values (1,'SP1',12,24000,'Tiền mặt', 'GHTK')
-   insert into THANHTOAN values (1,'SP2',9,36000,'Tiền mặt', 'GHTK')
-   
-
-
-   
+   insert into THANHTOAN values (2,'SP2',9,36000,'Tiền mặt', 'GHTK')
