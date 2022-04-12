@@ -10,6 +10,7 @@ namespace VPP18.Areas.Admin.Controllers
 {
     public class HomeADController : Controller
     {
+
         // GET: Admin/HomeAD
         MyDataDataContext data = new MyDataDataContext();
         string savePath = "/Content/images/";
@@ -30,36 +31,22 @@ namespace VPP18.Areas.Admin.Controllers
         }
         public ActionResult Edit(string id)
         {
-            var E_sanpham = data.SANPHAMs.First(m => m.IdSP == id);
-            return View(E_sanpham);
+            var E_ND = data.SANPHAMs.First(m => m.IdSP == id);
+            return View(E_ND);
         }
         [HttpPost]
-        public ActionResult Edit(string id, FormCollection collection)
+        public ActionResult Edit(SANPHAM dmsp, HttpPostedFileBase fileUpload)
         {
-            var E_idsanpham = data.SANPHAMs.First(m => m.IdSP == id);
-            var E_iddm = data.SANPHAMs.First(m => m.IdDM == m.IdDM);
-            var E_TenSP = collection["TenSP"];
-            var E_HinhAnh = collection["HinhAnh"];
-            var E_giaban = Convert.ToDecimal(collection["DonGia"]);
-            var E_SoLuongTon = Convert.ToInt32(collection["SoLuongTon"]);
-            var E_MoTa = collection["MoTa"];
-            E_idsanpham.IdSP = id;
-            if (string.IsNullOrEmpty(E_TenSP))
+            var dmspdb = data.SANPHAMs.FirstOrDefault(m => m.IdSP == dmsp.IdSP);
+            if (fileUpload != null)
             {
-                ViewData["Error"] = "Don't empty!";
+                System.IO.File.Delete(Path.Combine(Server.MapPath(savePath), dmspdb.HinhAnh.Replace(savePath, "")));
+                dmspdb.HinhAnh = savePath + fileUpload.FileName;
+                fileUpload.SaveAs(Path.Combine(Server.MapPath(savePath), fileUpload.FileName));
             }
-            else
-            {
-                E_idsanpham.TenSP = E_TenSP;
-                E_idsanpham.HinhAnh = E_HinhAnh;
-                E_idsanpham.DonGia = E_giaban;
-                E_idsanpham.SoLuongTon = E_SoLuongTon;
-                E_idsanpham.MoTa = E_MoTa;
-                UpdateModel(E_idsanpham);
-                data.SubmitChanges();
-                return RedirectToAction("ListSanPham");
-            }
-            return this.Edit(id);
+            dmspdb.TenSP = dmsp.TenSP;
+            data.SubmitChanges();
+            return RedirectToAction("ListSanPham");
         }
 
         public ActionResult Create()
@@ -96,15 +83,7 @@ namespace VPP18.Areas.Admin.Controllers
             return RedirectToAction("ListSanPham");
         }
 
-        public string ProcessUpload(HttpPostedFileBase file)
-        {
-            if (file == null)
-            {
-                return "";
-            }
-            file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
-            return "/Content/images/" + file.FileName;
-        }
+       
 
     }
 }

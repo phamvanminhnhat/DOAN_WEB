@@ -115,7 +115,7 @@ namespace VPP18.Controllers
             {
                 ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
                 Session["TenND"] = nd;
-                return RedirectToAction("ListSP", "SanPham");
+                return RedirectToAction("GioHang", "GioHang");
             }
             else
             {

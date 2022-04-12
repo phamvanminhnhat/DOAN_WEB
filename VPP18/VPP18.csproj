@@ -197,6 +197,12 @@
     <Content Include="Content\images\Keo8.jpg" />
     <Content Include="Content\images\Keo9.jpg" />
     <Content Include="Content\images\logo.jpg" />
+    <Content Include="Content\images\NCC1.jpg" />
+    <Content Include="Content\images\NCC2.jpg" />
+    <Content Include="Content\images\NCC3.jpg" />
+    <Content Include="Content\images\NCC4.jpg" />
+    <Content Include="Content\images\NCC5.jpg" />
+    <Content Include="Content\images\NCC6.jpg" />
     <Content Include="Content\images\Viet1.jpg" />
     <Content Include="Content\images\Viet10.jpg" />
     <Content Include="Content\images\Viet11.jpg" />
@@ -237,7 +243,6 @@
     <Content Include="Areas\Admin\Views\HomeAD\Create.cshtml" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Areas\Admin\Views\HomeAD\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAD\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAD\Detail.cshtml" />
     <Content Include="Content\css\.DS_Store" />
@@ -269,6 +274,8 @@
     <Content Include="Areas\Admin\Views\NhaCungCap\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\NhaCungCap\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhaCungCap\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAD\Edit.cshtml" />
     <None Include="Models\MyData.dbml.layout">
       <DependentUpon>MyData.dbml</DependentUpon>
     </None>

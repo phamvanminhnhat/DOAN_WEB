@@ -26,8 +26,10 @@
                             @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", @placeholder = "Nhập mật khẩu" })
                         </div>
                         <div style="text-align:center" class="form-group">
-                            @Html.ActionLink("Đăng ký","DangKy","Home")
+                           
+                            <a class="btn btn-sm btn-primary" href="/Home/DangKy"> ĐĂNG KÍ</a>
                             <input type="submit" name="submit" class="btn btn-primary" value="ĐĂNG NHẬP" />
+                            
                         </div>
                     }
                 </div>

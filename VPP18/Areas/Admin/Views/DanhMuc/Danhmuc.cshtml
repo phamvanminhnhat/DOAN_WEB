@@ -39,9 +39,10 @@
                         <td>
                            
                             
-                            <a class="btn btn-sm btn-warning" href="@Url.Action("Edit", "Danhmuc", new { id = item.IdDM})"><i class="fas fa-edit"></i> Edit</a>
-                            @Html.ActionLink("Details", "Detail", new { id = item.IdDM }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.IdDM }) |
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", "Danhmuc", new { id = item.IdDM})"><i class="fas fa-edit"></i> Edit</a>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("Detail", "Danhmuc", new { id = item.IdDM})"><i class="fas fa-info"></i> Detail</a>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("Delete", "Danhmuc", new { id = item.IdDM})"><i class="fas fa-trash-alt"></i> Delete</a>
+                            
 
                         </td>
                     </tr>

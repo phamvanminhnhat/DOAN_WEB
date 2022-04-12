@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ namespace VPP18.Areas.Admin.Controllers
 {
     public class NhaCungCapController : Controller
     {
+        string savePath = "/Content/images/";
         MyDataDataContext data = new MyDataDataContext();
 
         public ActionResult ListNhaCungCap()
@@ -25,36 +27,22 @@ namespace VPP18.Areas.Admin.Controllers
         }
         public ActionResult Edit(int id)
         {
-            var E_NCC = data.NCCs.First(m => m.IdNCC == id);
-            return View(E_NCC);
+            var E_ND = data.NCCs.First(m => m.IdNCC == id);
+            return View(E_ND);
         }
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(NCC dmsp, HttpPostedFileBase fileUpload)
         {
-            var E_idNCC = data.NCCs.First(m => m.IdNCC == id);
-            var E_TenNCC = collection["TenNCC"];
-            var E_HinhAnh = collection["HinhAnh"];
-            var E_SDT = collection["SDT"];
-            var E_diachi = collection["DiaChi"];
-            
-
-            E_idNCC.IdNCC = id;
-            if (string.IsNullOrEmpty(E_TenNCC))
+            var dmspdb = data.NCCs.FirstOrDefault(m => m.IdNCC == dmsp.IdNCC);
+            if (fileUpload != null)
             {
-                ViewData["Error"] = "Don't empty!";
+                System.IO.File.Delete(Path.Combine(Server.MapPath(savePath), dmspdb.HinhAnh.Replace(savePath, "")));
+                dmspdb.HinhAnh = savePath + fileUpload.FileName;
+                fileUpload.SaveAs(Path.Combine(Server.MapPath(savePath), fileUpload.FileName));
             }
-            else
-            {
-                E_idNCC.TenNCC = E_TenNCC;
-                E_idNCC.HinhAnh = E_HinhAnh;
-                E_idNCC.SDT = E_SDT;
-                E_idNCC.DiaChi = E_diachi;
-                
-                UpdateModel(E_idNCC);
-                data.SubmitChanges();
-                return RedirectToAction("ListNhaCungCap");
-            }
-            return this.Edit(id);
+            dmspdb.TenNCC = dmsp.TenNCC;
+            data.SubmitChanges();
+            return RedirectToAction("ListNhaCungCap");
         }
 
 
@@ -77,30 +65,22 @@ namespace VPP18.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.categories = data.NCCs.ToList();
+            ViewBag.suppliers = data.NCCs.ToList();
             return View();
         }
         [HttpPost]
-        public ActionResult Create(FormCollection collection, NCC ncc)
+        public ActionResult Create(SANPHAM sp, HttpPostedFileBase fileUpload)
         {
-            var E_TenNCC = collection["TenNCC"];
-            var E_hinhanh = collection["HinhAnh"];
-            var E_SDT = collection["SDT"];
-            var E_diachi = collection["DiaChi"];
-            if (string.IsNullOrEmpty(E_TenNCC))
+            if (fileUpload != null)
             {
-                ViewData["Error"] = "Don't empty!";
+                string fileName = fileUpload.FileName;
+                sp.HinhAnh = fileName;
+                fileUpload.SaveAs(Path.Combine(Server.MapPath(savePath), fileName));
             }
-            else
-            {
-                ncc.TenNCC = E_TenNCC.ToString();
-                ncc.HinhAnh = E_hinhanh.ToString();
-                ncc.SDT = E_SDT.ToString();
-                ncc.DiaChi= E_diachi.ToString();
-                data.NCCs.InsertOnSubmit(ncc);
-                data.SubmitChanges();
-                return RedirectToAction("ListNhaCungCap");
-            }
-            return this.Create();
+            data.SANPHAMs.InsertOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("ListNhaCungCap");
         }
 
     }

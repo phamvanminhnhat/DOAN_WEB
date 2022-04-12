@@ -5,11 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>XÓA SẢN PHẨM</h2>
 
 <h3>BẠN CÓ MUỐN XÓA DANH MỤC SẢN PHẨM</h3>
 <div>
-    <h4>DANH MỤC SẢN PHẨM</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -25,7 +24,7 @@
         </dt>
 
         <dd>
-            <img style="width:150px" src="~/Content/images/@Model.HinhAnh" />
+            <img style="width:150px" src="@Model.HinhAnh" />
         </dd>
 
     </dl>

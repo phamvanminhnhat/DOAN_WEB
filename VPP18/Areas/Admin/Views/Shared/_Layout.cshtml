@@ -49,6 +49,20 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Admin/Admin/DangNhap" class="nav-link">Đăng nhập</a>
+                </li>
+               
+                    @if (Session["TenDangNhap"] == null)
+                    {
+                        <a class="nav-link " href="#" data-toggle="dropdown">Tài khoản</a>
+                    }
+                    else
+                    {
+                        <a>@(((VPP18.Models.ADMIN)Session["TenDangNhap"]).TenDangNhap)</a>
+                        }
+
+               
                 <!-- Navbar Search -->
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
@@ -68,7 +82,7 @@
 
             </div>
         </nav>
-
+        
         <!-- /.navbar -->
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -129,11 +143,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin/NCC/Index" class="nav-link">
+                                <a href="/Admin/NhaCungCap/ListNhaCungCap" class="nav-link">
 
                                     <p>NHÀ CUNG CẤP</p>
                                 </a>
                             </li>
+                           
                         </ul>
                     </li>
 

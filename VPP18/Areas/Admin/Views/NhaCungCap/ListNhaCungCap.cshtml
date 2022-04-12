@@ -31,7 +31,7 @@
         @Html.DisplayFor(modelItem => item.TenNCC)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.HinhAnh)
+        <img style="width:150px" src="@item.HinhAnh" />
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.SDT)
@@ -40,9 +40,10 @@
         @Html.DisplayFor(modelItem => item.DiaChi)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.IdNCC }) |
-        @Html.ActionLink("Details", "Detail", new { id = item.IdNCC }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IdNCC })
+        <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", "NhaCungCap", new { id = item.IdNCC })"><i class="fas fa-edit"></i> Edit</a>
+        <a class="btn btn-sm btn-primary" href="@Url.Action("Detail", "NhaCungCap", new { id = item.IdNCC})"><i class="fas fa-info"></i> Detail</a>
+        <a class="btn btn-sm btn-primary" href="@Url.Action("Delete", "NhaCungCap", new { id = item.IdNCC})"><i class="fas fa-trash-alt"></i> Delete</a>
+
     </td>
 </tr>
     }
