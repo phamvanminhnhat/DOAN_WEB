@@ -37,7 +37,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-3 col-md-12">
                         <a href="/Home/Index" class="brand-wrap">
-                            <img class="logo" src="~/Content/images/logo.jpg">
+                            <img style="width:100px"class="logo" src="~/Content/images/logo.jpg">
                         </a> <!-- brand-wrap.// -->
                     </div>
                     <div class="col-xl-6 col-lg-5 col-md-6">
@@ -100,13 +100,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#"> <i class="fa fa-bars text-muted mr-2"></i>DANH MỤC SẢN PHẨM </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/SanPham/ListSP">Bút viết</a>
-                                <a class="dropdown-item" href="/DanhMucSanPham/Tapso">Tập sổ</a>
-                                <a class="dropdown-item" href="#">Kéo</a>
-
-                            </div>
+                            <a class="nav-link " href="/SanPham/ListSP"> SẢN PHẨM </a>
+                            
                         </li>
 
                         <li class="nav-item">
@@ -118,12 +113,22 @@
                     <ul class="navbar-nav ml-md-auto">
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Tài khoản</a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="/Home/DangKy">Đăng kí</a>
-                                <a class="dropdown-item" href="/Home/Dangnhap">Đăng nhập</a>
+                            @if (Session["TenND"] == null)
+                            {
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Tài khoản</a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="/Home/DangKy">Đăng kí</a>
+                                            <a class="dropdown-item" href="/Home/Dangnhap">Đăng nhập</a>
 
-                            </div>
+                                        </div> }
+                                    else
+                                    {
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">@(((VPP18.Models.NGUOIDUNG)Session["TenND"]).TenND)</a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="/Home/DangXuat">Đăng Xuất</a>
+
+                                        </div>}
+
                         </li>
                     </ul>
                 </div> <!-- collapse .// -->

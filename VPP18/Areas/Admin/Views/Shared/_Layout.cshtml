@@ -52,13 +52,13 @@
                 <!-- Navbar Search -->
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    
+
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                
+
             </ul>
 
         </nav>
@@ -86,15 +86,6 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="~/Content/admin/dist/img/user2-160x160.jpg" class=" elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-
-                </div>
-            </div>
-
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
@@ -122,7 +113,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin/DanhMuc/DanhMuc" class="nav-link">
+                                <a href="/Admin/DanhMuc/Danhmuc" class="nav-link">
                                     <p>DANH MỤC</p>
                                 </a>
                             </li>
@@ -135,6 +126,12 @@
                                 <a href="/Admin/QLNGUOIDUNG/Index" class="nav-link">
 
                                     <p>NGƯỜI DÙNG</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Admin/NCC/Index" class="nav-link">
+
+                                    <p>NHÀ CUNG CẤP</p>
                                 </a>
                             </li>
                         </ul>
@@ -182,9 +179,9 @@
     <script src="~/Content/admin/dist/js/pages/dashboard.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
-    
     @RenderSection("scripts", required: false)
     @RenderSection("upload", required: false)
+
 </body>
 
 </html>

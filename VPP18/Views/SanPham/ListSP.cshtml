@@ -1,11 +1,11 @@
-﻿@model IEnumerable<VPP18.Models.SANPHAM>
-
+﻿@model PagedList.IPagedList<VPP18.Models.SANPHAM>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "ListSP";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SẢN PHẨM</h2>
+<h2></h2>
 <section class="section-content padding-y">
     <div class="container">
 
@@ -14,21 +14,24 @@
             {
                 <div class="col-md-3">
 
-                    <div class="card card-category">
-                        <div class="img-wrap" style="background: #35ccf0">
-                            <img src="~/Content/images/Danhmuc/Vo1.jpg">
+                    <div class="card card-category" >
+                        <div class="img-wrap" >
+                            <img  src="~/Content/images/@item.HinhAnh">
                         </div>
                         <div style="text-align:center" class="card-body">
-                            <h4 class="card-title"><a href="#">@item.IdSP - @item.TenSP</a></h4>
-                            <h4 class="card-title"><a href="#"> @item.DonGia VND</a></h4>
+                            <h4 class="card-title"><a>@item.IdSP - @item.TenSP</a></h4>
+                            <h4 class="card-title"><a> @item.DonGia VND</a></h4>
                         </div>
                         <div class="card-body">
                             <a class="card-title"><a href="#">@item.MoTa</a></a>
                         </div>
-                        <div>
-                            <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",
-            new { @id = item.IdSP, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                        <div style="text-align:center">
+                            <a class="btn btn-primary" href="@Url.Action("ThemGioHang", "GioHang",
+            new { @id = item.IdSP, @strURL = Request.Url.ToString() })"><i class="fa-solid fa-cart-plus"></i></a>
+                            <a class="btn btn-primary" href="@Url.Action("Detail", "SanPham",
+            new { @id = item.IdSP, @strURL = Request.Url.ToString() })"><i class="fa-solid fa-info"></i></a>
                         </div>
+                        
 
                     </div>
 
@@ -38,7 +41,67 @@
 
 
         </nav> <!-- row.// -->
+        <div>
+            <div>
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+                @Model.PageCount
+            </div>
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("ListSP", new
+                {
+                    page = page
+                }))
+            </div>
 
+            <style>
+                .MenuTrang li {
+                    display: inline;
+                }
+            </style>
+            <style type="text/css">
+                #mau-nut a {
+                    clear: both;
+                    background-color: orange;
+                    color: snow;
+                }
+
+                    #mau-nut a:hover {
+                        background-color: darkcyan;
+                        color: snow;
+                    }
+            </style>
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var maxLength = 100;
+                    $(".show-read-more").each(function () {
+                        var myStr = $(this).text();
+                        if ($.trim(myStr).length > maxLength) {
+                            var newStr = myStr.substring(0, maxLength);
+                            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                            $(this).empty().html(newStr);
+
+                            $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a>');
+
+                            $(this).append('<span class="more-text">' + removedStr +
+                                '</span>');
+                        }
+                    });
+                    $(".read-more").click(function () {
+                        $(this).siblings(".more-text").contents().unwrap();
+
+                        27
+
+                        $(this).remove();
+                    });
+                });
+            </script>
+            <style>
+                .show-read-more .more-text {
+                    display: none;
+                }
+            </style>
+        </div>
 
     </div> <!-- container .//  -->
 </section>
@@ -62,8 +125,9 @@
                 <small class="form-text">We’ll never share your email address with a third-party. </small>
             </div> <!-- col-md-6.// -->
         </div>
-
-
     </div>
 </section>
 <!-- ========================= SECTION SUBSCRIBE END// ========================= -->
+
+
+

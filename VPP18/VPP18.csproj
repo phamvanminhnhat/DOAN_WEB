@@ -51,6 +51,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -122,6 +128,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeADController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaCungCapController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNGUOIDUNGController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -144,57 +151,81 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\ui.css" />
-    <Content Include="Content\images\avatars\avatar1.jpg" />
-    <Content Include="Content\images\avatars\avatar2.jpg" />
-    <Content Include="Content\images\avatars\avatar3.jpg" />
-    <Content Include="Content\images\banners\ad-sm.png" />
-    <Content Include="Content\images\banners\ad.png" />
-    <Content Include="Content\images\banners\banner-item1.jpg" />
-    <Content Include="Content\images\banners\banner-item2.jpg" />
-    <Content Include="Content\images\banners\banner-item3.jpg" />
-    <Content Include="Content\images\banners\banner1.jpg" />
-    <Content Include="Content\images\banners\banner2.jpg" />
-    <Content Include="Content\images\banners\banner3.jpg" />
-    <Content Include="Content\images\banners\banner4.jpg" />
-    <Content Include="Content\images\banners\banner5.jpg" />
-    <Content Include="Content\images\banners\banner6.jpg" />
-    <Content Include="Content\images\banners\banner7.jpg" />
-    <Content Include="Content\images\banners\banner8.jpg" />
-    <Content Include="Content\images\banners\banner9.jpg" />
-    <Content Include="Content\images\banners\slide1.jpg" />
-    <Content Include="Content\images\banners\slide2.jpg" />
-    <Content Include="Content\images\banners\slide3.jpg" />
-    <Content Include="Content\images\favicon.ico" />
-    <Content Include="Content\images\icons\flags\AU%402x.png" />
-    <Content Include="Content\images\icons\flags\AU.png" />
-    <Content Include="Content\images\icons\flags\CN%402x.png" />
-    <Content Include="Content\images\icons\flags\CN.png" />
-    <Content Include="Content\images\icons\flags\DE%402x.png" />
-    <Content Include="Content\images\icons\flags\DE.png" />
-    <Content Include="Content\images\icons\flags\GB%402x.png" />
-    <Content Include="Content\images\icons\flags\GB.png" />
-    <Content Include="Content\images\icons\flags\IN%402x.png" />
-    <Content Include="Content\images\icons\flags\IN.png" />
-    <Content Include="Content\images\icons\flags\RU%402x.png" />
-    <Content Include="Content\images\icons\flags\RU.png" />
-    <Content Include="Content\images\icons\flags\TR%402x.png" />
-    <Content Include="Content\images\icons\flags\TR.png" />
-    <Content Include="Content\images\icons\flags\US%402x.png" />
-    <Content Include="Content\images\icons\flags\US.png" />
-    <Content Include="Content\images\icons\flags\UZ%402x.png" />
-    <Content Include="Content\images\icons\flags\UZ.png" />
-    <Content Include="Content\images\icons\pay-american-ex.png" />
-    <Content Include="Content\images\icons\pay-bank.png" />
-    <Content Include="Content\images\icons\pay-mastercard.png" />
-    <Content Include="Content\images\icons\pay-visa-el.png" />
-    <Content Include="Content\images\icons\pay-visa.png" />
-    <Content Include="Content\images\misc\appstore.png" />
-    <Content Include="Content\images\misc\payments.png" />
-    <Content Include="Content\images\misc\playmarket.png" />
-    <Content Include="Content\images\posts\1.jpg" />
-    <Content Include="Content\images\posts\2.jpg" />
-    <Content Include="Content\images\posts\3.jpg" />
-    <Content Include="Content\images\posts\4.jpg" />
+    <Content Include="Content\images\baner1.jpg" />
+    <Content Include="Content\images\baner2.jpg" />
+    <Content Include="Content\images\baner3.jpg" />
+    <Content Include="Content\images\Bia1.jpg" />
+    <Content Include="Content\images\Bia2.jpg" />
+    <Content Include="Content\images\Bia3.jpg" />
+    <Content Include="Content\images\Bia4.jpg" />
+    <Content Include="Content\images\Bia5.jpg" />
+    <Content Include="Content\images\Bia6.jpg" />
+    <Content Include="Content\images\Bia7.jpg" />
+    <Content Include="Content\images\DM1.jpg" />
+    <Content Include="Content\images\DM2.jpg" />
+    <Content Include="Content\images\dm3.jpg" />
+    <Content Include="Content\images\DM4.jpg" />
+    <Content Include="Content\images\DM5.jpg" />
+    <Content Include="Content\images\DM6.jpg" />
+    <Content Include="Content\images\DM7.jpg" />
+    <Content Include="Content\images\Giay1.jpg" />
+    <Content Include="Content\images\Giay2.jpg" />
+    <Content Include="Content\images\Giay3.jpg" />
+    <Content Include="Content\images\Giay4.jpg" />
+    <Content Include="Content\images\Giay5.jpg" />
+    <Content Include="Content\images\Gom1.jpg" />
+    <Content Include="Content\images\Gom2.jpg" />
+    <Content Include="Content\images\Gom3.jpg" />
+    <Content Include="Content\images\Gom4.jpg" />
+    <Content Include="Content\images\Gom5.jpg" />
+    <Content Include="Content\images\Gom6.jpg" />
+    <Content Include="Content\images\Gom7.jpg" />
+    <Content Include="Content\images\Ho1.jpg" />
+    <Content Include="Content\images\Ho2.jpg" />
+    <Content Include="Content\images\Ho3.jpg" />
+    <Content Include="Content\images\Ho4.jpg" />
+    <Content Include="Content\images\Ho5.jpg" />
+    <Content Include="Content\images\Ho6.jpg" />
+    <Content Include="Content\images\Ho7.jpg" />
+    <Content Include="Content\images\Keo1.jpg" />
+    <Content Include="Content\images\Keo2.jpg" />
+    <Content Include="Content\images\Keo3.jpg" />
+    <Content Include="Content\images\Keo4.jpg" />
+    <Content Include="Content\images\Keo5.jpg" />
+    <Content Include="Content\images\Keo6.jpg" />
+    <Content Include="Content\images\Keo7.jpg" />
+    <Content Include="Content\images\Keo8.jpg" />
+    <Content Include="Content\images\Keo9.jpg" />
+    <Content Include="Content\images\logo.jpg" />
+    <Content Include="Content\images\Viet1.jpg" />
+    <Content Include="Content\images\Viet10.jpg" />
+    <Content Include="Content\images\Viet11.jpg" />
+    <Content Include="Content\images\Viet12.jpg" />
+    <Content Include="Content\images\Viet13.jpg" />
+    <Content Include="Content\images\Viet14.jpg" />
+    <Content Include="Content\images\Viet15.jpg" />
+    <Content Include="Content\images\Viet16.jpg" />
+    <Content Include="Content\images\Viet2.jpg" />
+    <Content Include="Content\images\Viet3.jpg" />
+    <Content Include="Content\images\Viet4.jpg" />
+    <Content Include="Content\images\Viet5.jpg" />
+    <Content Include="Content\images\Viet6.jpg" />
+    <Content Include="Content\images\Viet7.jpg" />
+    <Content Include="Content\images\Viet8.jpg" />
+    <Content Include="Content\images\Viet9.jpg" />
+    <Content Include="Content\images\Vo1.jpg" />
+    <Content Include="Content\images\Vo10.jpg" />
+    <Content Include="Content\images\Vo11.jpg" />
+    <Content Include="Content\images\Vo12.jpg" />
+    <Content Include="Content\images\Vo2.jpg" />
+    <Content Include="Content\images\Vo3.jpg" />
+    <Content Include="Content\images\Vo4.jpg" />
+    <Content Include="Content\images\Vo5.jpg" />
+    <Content Include="Content\images\Vo6.jpg" />
+    <Content Include="Content\images\Vo7.jpg" />
+    <Content Include="Content\images\Vo8.jpg" />
+    <Content Include="Content\images\Vo9.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -209,26 +240,16 @@
     <Content Include="Areas\Admin\Views\HomeAD\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAD\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAD\Detail.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMuc\Index.cshtml" />
     <Content Include="Content\css\.DS_Store" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\responsive.css.map" />
     <Content Include="Content\css\ui.css.map" />
-    <Content Include="Content\images\.DS_Store" />
-    <Content Include="Content\images\banners\.DS_Store" />
-    <Content Include="Content\images\icons\.DS_Store" />
-    <Content Include="Content\images\posts\.DS_Store" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Models\MyData.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MyData.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Admin\Views\DanhMuc\Danhmuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLNGUOIDUNG\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QLNGUOIDUNG\Detail.cshtml" />
@@ -238,6 +259,16 @@
     <Content Include="Areas\Admin\Views\DanhMuc\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMuc\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DangNhap.cshtml" />
+    <Content Include="Models\MyData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MyData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\DanhMuc\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\ListNhaCungCap.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Delete.cshtml" />
     <None Include="Models\MyData.dbml.layout">
       <DependentUpon>MyData.dbml</DependentUpon>
     </None>
@@ -282,8 +313,9 @@
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\SanPham\Detail.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
-    <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\GioHang\Xacnhangiohang.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

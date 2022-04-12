@@ -1,0 +1,50 @@
+﻿@model IEnumerable<VPP18.Models.NCC>
+
+@{
+    ViewBag.Title = "ListNhaCungCap";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DANH SÁCH NHÀ CUNG CẤP</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>MÃ NCC:</th>
+        <th>TÊN NHÀ CUNG CẤP:</th>
+        <th>HÌNH ẢNH:</th>
+        <th>SỐ ĐIỆN THOẠI:</th>
+        <th>ĐỊA CHỈ:</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.IdNCC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenNCC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HinhAnh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SDT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IdNCC }) |
+        @Html.ActionLink("Details", "Detail", new { id = item.IdNCC }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IdNCC })
+    </td>
+</tr>
+    }
+
+</table>

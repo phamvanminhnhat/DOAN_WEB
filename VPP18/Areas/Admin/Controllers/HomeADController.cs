@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +12,7 @@ namespace VPP18.Areas.Admin.Controllers
     {
         // GET: Admin/HomeAD
         MyDataDataContext data = new MyDataDataContext();
+        string savePath = "/Content/images/";
         public ActionResult Index()
         {
             return View();
@@ -62,32 +64,23 @@ namespace VPP18.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.categories = data.DANHMUCSANPHAMs.ToList();
+            ViewBag.suppliers = data.NCCs.ToList();
             return View();
         }
+
         [HttpPost]
-        public ActionResult Create(FormCollection collection, SANPHAM sp)
+        public ActionResult Create(SANPHAM sp, HttpPostedFileBase fileUpload)
         {
-            var E_TenSP = collection["TenSP"];
-            var E_hinhanh = collection["HinhAnh"];
-            var E_dongia = Convert.ToDecimal(collection["DonGia"]);
-            var E_soluongton = Convert.ToInt32(collection["SoLuongTon"]);
-            var E_mota = collection["MoTa"];
-            if (string.IsNullOrEmpty(E_TenSP))
+           if(fileUpload != null)
             {
-                ViewData["Error"] = "Don't empty!";
+                string fileName = fileUpload.FileName;
+                sp.HinhAnh = fileName;
+                fileUpload.SaveAs(Path.Combine(Server.MapPath(savePath), fileName));
             }
-            else
-            {
-                sp.TenSP = E_TenSP.ToString();
-                sp.HinhAnh = E_hinhanh.ToString();
-                sp.DonGia = E_dongia;
-                sp.SoLuongTon = E_soluongton;
-                sp.MoTa = E_mota;
-                data.SANPHAMs.InsertOnSubmit(sp);
-                data.SubmitChanges();
-                return RedirectToAction("ListSanPham");
-            }
-            return this.Create();
+            data.SANPHAMs.InsertOnSubmit(sp);
+            data.SubmitChanges();
+           return RedirectToAction("ListSanPham");
         }
         public ActionResult Delete(string id)
         {
@@ -102,6 +95,16 @@ namespace VPP18.Areas.Admin.Controllers
             data.SubmitChanges();
             return RedirectToAction("ListSanPham");
         }
-    
-}
+
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
+            return "/Content/images/" + file.FileName;
+        }
+
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,7 @@ namespace VPP18.Areas.Admin.Controllers
     public class DanhMucController : Controller
     {
         MyDataDataContext data = new MyDataDataContext();
+        private const string savePath = "/Content/images/";
         // GET: DanhMucSanPham
         public ActionResult Danhmuc()
         {
@@ -29,28 +31,18 @@ namespace VPP18.Areas.Admin.Controllers
             return View(E_ND);
         }
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(DANHMUCSANPHAM dmsp, HttpPostedFileBase fileUpload)
         {
-            var E_idDM = data.DANHMUCSANPHAMs.First(m => m.IdDM == id);
-            var E_TenDM = collection["TenDM"];
-            var E_Hinh = collection["HinhAnh"];
-            
-
-            E_idDM.IdDM = id;
-            if (string.IsNullOrEmpty(E_TenDM))
+            var dmspdb = data.DANHMUCSANPHAMs.FirstOrDefault(m => m.IdDM == dmsp.IdDM);
+            if(fileUpload != null)
             {
-                ViewData["Error"] = "Don't empty!";
+                System.IO.File.Delete(Server.MapPath(dmsp.HinhAnh));
+                dmspdb.HinhAnh = savePath + fileUpload.FileName;
+                fileUpload.SaveAs(Path.Combine(Server.MapPath(savePath), fileUpload.FileName));
             }
-            else
-            {
-                E_idDM.TenDM = E_TenDM;
-                E_idDM.HinhAnh = E_Hinh;
-                
-                UpdateModel(E_idDM);
-                data.SubmitChanges();
-                return RedirectToAction("Index");
-            }
-            return this.Edit(id);
+            dmspdb.TenDM = dmsp.TenDM;
+            data.SubmitChanges();
+            return RedirectToAction("Danhmuc");
         }
 
 
@@ -65,7 +57,24 @@ namespace VPP18.Areas.Admin.Controllers
             var D_ND = data.DANHMUCSANPHAMs.Where(m => m.IdDM == id).First();
             data.DANHMUCSANPHAMs.DeleteOnSubmit(D_ND);
             data.SubmitChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Danhmuc");
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(DANHMUCSANPHAM dm, HttpPostedFileBase fileUpload)
+        {
+            if (fileUpload != null)
+            {
+                dm.HinhAnh = savePath + fileUpload.FileName;
+                fileUpload.SaveAs(Path.Combine(Server.MapPath(savePath), fileUpload.FileName));
+            }
+            data.DANHMUCSANPHAMs.InsertOnSubmit(dm);
+            data.SubmitChanges();
+            return RedirectToAction("Danhmuc");
         }
 
     }

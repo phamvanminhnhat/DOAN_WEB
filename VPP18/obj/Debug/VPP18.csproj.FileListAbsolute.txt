@@ -58,3 +58,127 @@ C:\Users\thien\Desktop\LAPTRINH WEB\VPP18\VPP18\bin\roslyn\System.Buffers.dll
 C:\Users\thien\Desktop\LAPTRINH WEB\VPP18\VPP18\bin\roslyn\System.Memory.dll
 C:\Users\thien\Desktop\LAPTRINH WEB\VPP18\VPP18\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\thien\Desktop\LAPTRINH WEB\VPP18\VPP18\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\obj\Debug\VPP18.csproj.AssemblyReference.cache
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\obj\Debug\VPP18.csproj.CoreCompileInputs.cache
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\VPP18.dll.config
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\VPP18.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\VPP18.pdb
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\csc.exe
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\csc.exe.config
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\csc.rsp
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\csi.exe
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\csi.exe.config
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\csi.rsp
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Buffers.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Memory.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\vbc.exe
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\vbc.exe.config
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\vbc.rsp
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\VBCSCompiler.exe
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Antlr3.Runtime.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Newtonsoft.Json.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Helpers.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Mvc.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Optimization.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Razor.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.WebPages.Deployment.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.WebPages.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.WebPages.Razor.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\WebGrease.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Newtonsoft.Json.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Helpers.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Mvc.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Optimization.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.Razor.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.WebPages.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.WebPages.Deployment.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\System.Web.WebPages.Razor.xml
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\bin\Antlr3.Runtime.pdb
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\obj\Debug\VPP18.csproj.CopyComplete
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\obj\Debug\VPP18.dll
+C:\Users\phamv\OneDrive\Máy tính\VPP18\VPP18\obj\Debug\VPP18.pdb
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\VPP18.dll.config
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\VPP18.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\VPP18.pdb
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\csc.exe
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\csc.exe.config
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\csc.rsp
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\csi.exe
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\csi.exe.config
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\csi.rsp
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Buffers.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Memory.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\vbc.exe
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\vbc.exe.config
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\vbc.rsp
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\VBCSCompiler.exe
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Antlr3.Runtime.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Newtonsoft.Json.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Helpers.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Mvc.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Optimization.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Razor.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.WebPages.Deployment.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.WebPages.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.WebPages.Razor.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\WebGrease.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Newtonsoft.Json.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Helpers.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Mvc.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Optimization.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.Razor.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.WebPages.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.WebPages.Deployment.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\System.Web.WebPages.Razor.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\Antlr3.Runtime.pdb
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\obj\Debug\VPP18.csproj.CoreCompileInputs.cache
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\obj\Debug\VPP18.csproj.CopyComplete
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\obj\Debug\VPP18.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\obj\Debug\VPP18.pdb
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\PagedList.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\PagedList.Mvc.dll
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\PagedList.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\bin\PagedList.Mvc.xml
+C:\Users\phamv\OneDrive\Máy tính\do an\VPP18\VPP18\obj\Debug\VPP18.csproj.AssemblyReference.cache

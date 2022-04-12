@@ -23,19 +23,20 @@ namespace VPP18.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult DangNhap(FormCollection collection)
         {
-            var tendangnhap = collection["TenDangNhap"];
+            var tdn = collection["TenDangNhap"];
             var matkhau = collection["MatKhau"];
-            ADMIN nd = data.ADMINs.FirstOrDefault(n => n.TenDangNhap == tendangnhap && n.MatKhau == matkhau);
+            ADMIN nd = data.ADMINs.FirstOrDefault(n => n.TenDangNhap.Equals(tdn) && n.MatKhau.Equals(matkhau));
             if (nd != null)
             {
                 ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
                 Session["TenDangNhap"] = nd;
+                return RedirectToAction("Index", "HomeAD");
             }
             else
             {
                 ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
             }
-            return RedirectToAction("ListSanPham", "HomeAD");
+            return View();
         }
     }
 }

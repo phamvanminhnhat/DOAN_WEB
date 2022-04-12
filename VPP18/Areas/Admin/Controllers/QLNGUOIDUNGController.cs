@@ -9,7 +9,7 @@ namespace VPP18.Areas.Admin.Controllers
 {
     public class QLNGUOIDUNGController : Controller
     {
-        MyDataDataContext data= new MyDataDataContext();
+        MyDataDataContext data = new MyDataDataContext();
         // GET: Admin/QLNGUOIDUNG
         public ActionResult Index()
         {
@@ -61,7 +61,7 @@ namespace VPP18.Areas.Admin.Controllers
         
         public ActionResult Delete(int id)
         {
-            var D_ND = data.NGUOIDUNGs.First(m => m.IdND == id);
+            var D_ND = data.NGUOIDUNGs.FirstOrDefault(m => m.IdND == id);
             return View(D_ND);
         }
         [HttpPost]

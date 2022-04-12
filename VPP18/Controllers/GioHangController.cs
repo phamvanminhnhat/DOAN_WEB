@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using VPP18.Models;
 
+
 namespace VPP18.Controllers
 {
     public class GioHangController : Controller
     {
 
         MyDataDataContext data = new MyDataDataContext();
+
+
         public List<GioHang> LayGioHang()
         {
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
@@ -141,7 +144,7 @@ namespace VPP18.Controllers
         [HttpGet]
         public ActionResult DatHang()
         {
-            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            if (Session["TenND"] == null || Session["TenND"].ToString() == "")
             {
                 return RedirectToAction("DangNhap", "Home");
             }
@@ -155,21 +158,24 @@ namespace VPP18.Controllers
             ViewBag.Tongsoluongsanpham = TongSoLuongSanPham();
             return View(lstGiohang);
         }
+
+
         public ActionResult DatHang(FormCollection collection)
         {
             DONHANG dh = new DONHANG();
-            NGUOIDUNG kh = (NGUOIDUNG)Session["TaiKhoan"];
+            NGUOIDUNG kh = (NGUOIDUNG)Session["TenND"];
             SANPHAM s = new SANPHAM();
 
             List<GioHang> gh = LayGioHang();
-            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["NgayGiao"]);
+            var ngaygiao = String.Format("{0:dd/MM/yyyy}", collection["NgayGiao"]);
 
             dh.IdND = kh.IdND;
             dh.NgayDat = DateTime.Now;
             dh.NgayGiao = DateTime.Parse(ngaygiao);
-            
-            
+            dh.TinhTrang = "1";
+            dh.ThanhTien = null;
 
+            decimal tong = 0;
             data.DONHANGs.InsertOnSubmit(dh);
             data.SubmitChanges();
             foreach (var item in gh)
@@ -181,13 +187,15 @@ namespace VPP18.Controllers
                 ctdh.TongTien = (decimal)item.GiaBan;
                 s = data.SANPHAMs.Single(n => n.IdSP == item.IdSP);
                 s.SoLuongTon -= ctdh.SoLuong;
-                data.SubmitChanges();
-
                 data.THANHTOANs.InsertOnSubmit(ctdh);
+
+                tong = (decimal)(tong + (int)item.GiaBan);
             }
+            dh.ThanhTien = tong;
             data.SubmitChanges();
+
             Session["Giohang"] = null;
-            return RedirectToAction("Xacnhangiohang", "Giohang");
+            return RedirectToAction("Xacnhangiohang", "GioHang");
         }
         // GET: GioHang
         public ActionResult Xacnhangiohang()
